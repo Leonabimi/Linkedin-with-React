@@ -17,7 +17,7 @@ class PostContent extends Component {
 			author: {},
 			test: "test",
 			rate: 1,
-			elementId: this.props.post._id,
+			elementId: this.props.post.id,
 		},
 		submittedSize: 0,
 		showComment: false,
@@ -96,7 +96,7 @@ class PostContent extends Component {
 						comment: "",
 						author: "",
 						rate: 1,
-						elementId: this.props.post._id,
+						elementId: this.props.post.id,
 					},
 					errMessage: "",
 					submittedSize: this.state.submittedSize + 1,
@@ -122,7 +122,7 @@ class PostContent extends Component {
 				{!this.state.isDeleted && (
 					<div className='post-card mb-3' id={this.props.id}>
 						<ImagePreviewModal
-							image={post.image && post.image}
+							image={post.imgurl && post.imgurl}
 							show={this.state.imgPreviewModal}
 							onHide={() => {
 								this.setState({
@@ -134,27 +134,27 @@ class PostContent extends Component {
 							<DropdownPost
 								toggleModal={true}
 								post={post}
-								userId={post.user._id}></DropdownPost>
+								profileId={post.profileId}></DropdownPost>
 							<Row>
 								<Col md={12} className='mt-4'>
-									<Link to={`/profile/${post.user._id}`}>
-										{post.user.image && (
+									<Link to={`/profile/${post.profileId}`}>
+										{post.profile.image && (
 											<img
 												className='user-img float-left'
-												src={post.user.image}
+												src={post.profile.imgurl}
 												alt='user-avatar'
 											/>
 										)}
 										<div className='user-info float-left d-flex flex-column'>
 											<h5 className='ml-0'>
-												{post.user.name}{" "}
-												{post.user.surname}
+												{post.profile.name}{" "}
+												{post.profile.surname}
 												&middot; <span>1st</span>
 											</h5>
 											<p
 												style={{ textAlign: "left" }}
 												className='ml-2 '>
-												{post.user.title}
+												{post.profile.title}
 											</p>
 										</div>
 									</Link>
@@ -170,7 +170,7 @@ class PostContent extends Component {
 									</p>
 								</Col>
 								<Col md={12}>
-									{post.image && (
+									{post.imgurl && (
 										<img
 											className='post-img'
 											onClick={() =>
@@ -179,7 +179,7 @@ class PostContent extends Component {
 												})
 											}
 											style={{ width: "100%" }}
-											src={post.image}
+											src={post.imgurl}
 											alt='post-image'
 										/>
 									)}
@@ -206,7 +206,7 @@ class PostContent extends Component {
 											onChangeElement={
 												this.updateCommentField
 											}
-											postId={post._id}
+											postId={post.id}
 										/>
 									</Col>
 
@@ -218,7 +218,7 @@ class PostContent extends Component {
 											submittedSize={
 												this.state.submittedSize
 											}
-											postId={post._id}
+											postId={post.id}
 										/>
 									</Col>
 								</div>

@@ -42,7 +42,7 @@ class Profile extends React.Component {
 
 		try {
 			let response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+				`https://linkedin-bw-clone.herokuapp.com/api/profile/${userId}/imgurl`,
 				{
 					method: "POST",
 					body: formData,

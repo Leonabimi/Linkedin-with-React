@@ -41,7 +41,7 @@ class Home extends React.Component {
 					body: this.state.formData,
 					headers: new Headers({
 						// "Content-Type": "multipart/form-data",
-						Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+						//Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
 					}),
 				}
 			);
@@ -55,7 +55,7 @@ class Home extends React.Component {
 	};
 
 	fetchPost = async () => {
-		let response = await fetch(process.env.REACT_APP_BASE_URL + `posts/`, {
+		let response = await fetch("https://linkedin-bw-clone.herokuapp.com/api/posts", {
 			method: "POST",
 			body: JSON.stringify(this.state.post),
 			headers: new Headers({
@@ -64,6 +64,8 @@ class Home extends React.Component {
 			}),
 		});
 		let result = await response.json();
+
+		console.log(result)
 
 		let imageUpload = await this.uploadImage(result._id);
 	};

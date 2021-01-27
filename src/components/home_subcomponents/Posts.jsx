@@ -8,10 +8,10 @@ class Posts extends Component {
 	getPosts = async () => {
 		try {
 			const response = await fetch(
-				"https://striveschool-api.herokuapp.com/api/posts/ ",
+				"https://linkedin-bw-clone.herokuapp.com/api/posts ",
 				{
 					headers: {
-						Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+						//Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
 					},
 				}
 			);
@@ -20,7 +20,7 @@ class Posts extends Component {
 				const posts = await response.json();
 				console.log("posts", posts);
 				this.setState({
-					posts: posts.reverse().slice(0, 50),
+					posts: posts.reverse(),
 					isLoading: false,
 				});
 			}
@@ -58,7 +58,7 @@ class Posts extends Component {
 				)}
 				{posts.map((post) => {
 					return (
-						<PostContent id={post._id} key={post._id} post={post} />
+						<PostContent id={post.id} key={post.id} post={post} />
 					);
 				})}
 			</div>

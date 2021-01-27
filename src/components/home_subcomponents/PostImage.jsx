@@ -45,7 +45,7 @@ class PostImage extends Component {
 						<Form className='profile-image-upload'>
 							<Form.Group>
 								<Form.File
-									onChange={this.preview_image}
+									onChange={this.imgurl}
 									id='post-image-upload-file'
 									type='file'
 								/>

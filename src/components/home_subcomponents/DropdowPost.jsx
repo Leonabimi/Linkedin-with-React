@@ -40,7 +40,7 @@ class DropdownPost extends Component {
 					</Dropdown.Toggle>
 
 					<Dropdown.Menu className='dropdown-post'>
-						{userId === post.user._id && (
+						{userId === post.profile.id && (
 							<Dropdown.Item onClick={() => toggleModal(post)}>
 								<TurnedInNotIcon /> <strong>Edit</strong>
 								<p className='text-muted'>Save for later</p>
@@ -81,7 +81,7 @@ class DropdownPost extends Component {
 
 						<Dropdown.Item
 							className={
-								currentUserId === post.user._id
+								currentUserId === post.profile.id
 									? "d-block"
 									: "d-none"
 							}
